@@ -1,6 +1,6 @@
 import requests
 
-response = requests.get("https://api2.hiveos.farm/api/v2/farms",  headers={'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGkiLCJpYXQiOjE2Mjc1NTQ1MzYsImV4cCI6MTk0MjkxNDUzNiwibmJmIjoxNjI3NTU0NTM2LCJqdGkiOjM4NjA0Njg5LCJzdWIiOjM4NjA0Njg5fQ.Lsy60BimryYBuZF23xbaazV_zBTecYb14Cb7XWRaZ98'})
+response = requests.get("https://api2.hiveos.farm/api/v2/farms",  headers={'Authorization': 'Bearer <token>'})
 
 temp = 0
 chip_temp = 0
@@ -10,7 +10,7 @@ farms = response.json()['data']
 for farm in farms:
     print(f"Farm: {farm['id']}")
     url = 'https://api2.hiveos.farm/api/v2/farms/' + str(farm['id']) + '/workers'
-    temp_response = requests.get(url,  headers={'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGkiLCJpYXQiOjE2Mjc1NTQ1MzYsImV4cCI6MTk0MjkxNDUzNiwibmJmIjoxNjI3NTU0NTM2LCJqdGkiOjM4NjA0Njg5LCJzdWIiOjM4NjA0Njg5fQ.Lsy60BimryYBuZF23xbaazV_zBTecYb14Cb7XWRaZ98'})
+    temp_response = requests.get(url,  headers={'Authorization': 'Bearer <token>'})
     workers = temp_response.json()['data']
     for worker in temp_response.json()['data']:
         print(f'\tWorker id: {worker["id"]}')

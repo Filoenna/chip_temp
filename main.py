@@ -1,6 +1,7 @@
 import requests
+import config
 
-response = requests.get("https://api2.hiveos.farm/api/v2/farms",  headers={'Authorization': 'Bearer <token>'})
+response = requests.get("https://api2.hiveos.farm/api/v2/farms",  headers={'Authorization': 'Bearer ' + config.token})
 
 temp = 0
 chip_temp = 0
@@ -10,7 +11,7 @@ farms = response.json()['data']
 for farm in farms:
     print(f"Farm: {farm['id']}")
     url = 'https://api2.hiveos.farm/api/v2/farms/' + str(farm['id']) + '/workers'
-    temp_response = requests.get(url,  headers={'Authorization': 'Bearer <token>'})
+    temp_response = requests.get(url,  headers={'Authorization': 'Bearer ' + config.token})
     workers = temp_response.json()['data']
     for worker in temp_response.json()['data']:
         print(f'\tWorker id: {worker["id"]}')
